@@ -27,7 +27,7 @@ const SignUpPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    const success = validateForm()
+    const success = validateForm();
 
     if(success === true) signup(formData);
   };
@@ -43,7 +43,7 @@ const SignUpPage = () => {
             <div className='size-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors'>
               <MessageSquare className='size-6 text-primary' />
             </div>
-            <h1 className='text-2xl font-bold mt-2'>Create Account</h1>
+            <h1 className='text-2xl font-bold mt-2'>Create Account, Create Moments</h1>
             <p className='text-base-content/60'>Get Started with your free account </p>
           </div>
       </div>

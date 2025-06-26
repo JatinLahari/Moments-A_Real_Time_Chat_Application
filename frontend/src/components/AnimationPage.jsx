@@ -13,8 +13,8 @@ const EmptyChatContainer = () =>{
         <div className="flex-1 md:flex flex-col justify-center items-center hidden duration-1000 transition-all">
             <Lottie 
                 isClickToPauseDisabled={true}
-                height={300}
-                width={300}
+                height={250}
+                width={250}
                 options={animationDefaultOptions}
             />
             <div className="text-opacity-50 text-white flex flex-col gap-5 items-center mt-10 lg:text-4xl text-3xl transition-all duration 300 text-center">
