@@ -8,7 +8,7 @@ export const auth = async(req, res, next)=>{
         if(!token) return res.status(401).json({message:"Unauthorized user -  No token found."});
         let decode = jwt.verify(token, process.env.THE_KEY_OF_SECRET);
         if(!decode) return res.status(401).json({message:"Unauthorized token!"});
-        let user = await User.findById(decode.userId, {fullName:1,email:1,})
+        let user = await User.findById(decode.userId, {password: false});
         req.user = user;
         next();
     }

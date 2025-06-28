@@ -19,5 +19,5 @@ chat.use("/user", userRouter);
 chat.use("/message", messageRouter);
 chat.listen(process.env.PORT,()=>{
     console.log("Server Started...");
-    connectDB()
+    connectDB();
 });

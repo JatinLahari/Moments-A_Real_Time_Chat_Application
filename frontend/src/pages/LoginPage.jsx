@@ -1,4 +1,4 @@
-import { Eye, EyeOff, Loader2, Lock, MessageSquare, UserRound } from "lucide-react";
+import { Eye, EyeOff, Loader2, Lock, Mail, MessageSquare } from "lucide-react";
 import AnimationPage from "../components/AnimationPage";
 import { useState } from "react";
 import { useAuthStore } from "../store/useAuthStore";
@@ -12,11 +12,14 @@ const LoginPage = () => {
     password: "",
   });
 
+  const {login, isLoggingIn} = useAuthStore();
+
   const validateForm = () =>{
     if(!formData.email.trim()) return toast.error("Email is required.");
     if(!formData.password) return toast.error("Password is required");
+
+    return true;
   }
-  const {login, isLoggingIn} = useAuthStore();
   const handleSubmit = (e)=>{
     e.preventDefault()
 
@@ -47,7 +50,7 @@ const LoginPage = () => {
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="form-control">
                 <lable className="label">
-                  <UserRound className="size-5 text-base-content/60"/>
+                  <Mail className="size-5 text-base-content/60"/>
                   <span className="label-text font-medium">Email</span>
                 </lable>
                 <div className="relative">
