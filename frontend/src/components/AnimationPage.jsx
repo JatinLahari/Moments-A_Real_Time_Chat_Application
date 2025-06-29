@@ -1,9 +1,10 @@
-
 import Lottie from "react-lottie"
 import animationData from "../assets/Animation.json";
+import { useThemeStore } from "../store/useThemeStore";
 
 const EmptyChatContainer = () =>{
-
+    const {theme} = useThemeStore();
+    const text_theme = theme !== "light" ? "text-white" : "text-black";
     const animationDefaultOptions = {
         loop:true,
         autoplay: true,
@@ -18,7 +19,7 @@ const EmptyChatContainer = () =>{
                 options={animationDefaultOptions}
             />
             <div className="text-opacity-50 text-white flex flex-col gap-5 items-center mt-10 lg:text-4xl text-3xl transition-all duration 300 text-center">
-                <h3 className="poppins-medium">
+                <h3 className={`poppins-medium font-semibold ${text_theme}`}>
                     Hi<span className="text-blue-500 animate-pulse">!</span> Welcome to 
                     <span className="text-blue-500 animate-pulse"> Momento </span>
                     Chat App<span className="text-blue-500 animate-pulse">.</span>
