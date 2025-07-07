@@ -69,8 +69,8 @@ const MessageInput = () => {
           <Image size={20}/>
         </button>
         </div>
-        <button type='submit' className='btn btn-sm btn-circle' disabled={!text.trim() && !imagePreview}>
-          <Send size={22}/>
+        <button type='submit' className='btn btn-md btn-circle' disabled={!text.trim() && !imagePreview}>
+          <Send size={22} className='pr-0.5'/> 
         </button>
       </form>
     </div>
