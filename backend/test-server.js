@@ -1,16 +1,10 @@
 import express from "express";
-import dotenv from "dotenv";
 import { createServer } from "http";
 import { Server } from "socket.io";
-// import userRouter from "./routes/user.route.js"
-// import messageRouter from "./routes/message.route.js";
-// import { connectDB } from "./lib/db.js";
-import cookieParser from "cookie-parser";
 import cors from "cors";
 
-dotenv.config();
-const chat = express();
-const server = createServer(chat);
+const app = express();
+const server = createServer(app);
 
 const io = new Server(server, {
     cors: {
@@ -19,14 +13,12 @@ const io = new Server(server, {
     }
 });
 
-chat.use(express.json());
-chat.use(cookieParser());
-chat.use(cors({
+app.use(cors({
     origin: "http://localhost:5173",
     credentials: true
 }));
 
-const onlineUsers = new Map(); // userId -> socketId
+const onlineUsers = new Map();
 
 io.on("connection", (socket) => {
     console.log("A user connected:", socket.id);
@@ -57,14 +49,10 @@ io.on("connection", (socket) => {
     });
 });
 
-// Make io available to other parts of the app
-export { io };
+app.get("/", (req, res) => {
+    res.json({ message: "Socket server is running!" });
+});
 
-// Temporarily disabled routes for socket testing
-// chat.use("/user", userRouter);
-// chat.use("/message", messageRouter);
-
-server.listen(process.env.PORT,()=>{
-    console.log(`Server Started on port ${process.env.PORT}...`);
-    // connectDB(); // Temporarily disabled for testing socket functionality
+server.listen(5000, () => {
+    console.log("Test server started on port 5000");
 });
