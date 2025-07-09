@@ -5,8 +5,8 @@ import messageRouter from "./routes/message.route.js";
 import { connectDB } from "./lib/db.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import{chat, server} from "./lib/socket.js";
 dotenv.config();
-const chat = express();
 
 chat.use(express.json());
 chat.use(cookieParser());
@@ -17,7 +17,7 @@ chat.use(cors({
 
 chat.use("/user", userRouter);
 chat.use("/message", messageRouter);
-chat.listen(process.env.PORT,()=>{
+server.listen(process.env.PORT,()=>{
     console.log("Server Started...");
     connectDB();
 });

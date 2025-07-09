@@ -49,10 +49,10 @@ const LoginPage = () => {
 
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="form-control">
-                <lable className="label">
+                <label className="label">
                   <Mail className="size-5 text-base-content/60"/>
                   <span className="label-text font-medium">Email</span>
-                </lable>
+                </label>
                 <div className="relative">
                   <input 
                   type="email"
@@ -64,10 +64,10 @@ const LoginPage = () => {
               </div>
 
               <div className="form-control">
-                <lable className="label">
+                <label className="label">
                   <Lock className="size-5 text-base-content/60"/>
                   <span className="label-text font-medium">Password</span>
-                </lable>
+                </label>
                 <div className="relative">
                   <input 
                   type={showPassword ? "text" : "password"}
