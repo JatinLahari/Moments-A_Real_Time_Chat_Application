@@ -1,6 +1,7 @@
 import User from "../models/user.model.js";
 import Message from "../models/message.model.js";
 import cloudinary from "../lib/cloudinary.js";
+import { getReceiverSocketId, io } from "../lib/socket.js";
 
 export const userForSideBar = async(request, response, next)=>{
   try{
@@ -53,12 +54,15 @@ export const sendMessages = async(request, response,next)=>{
       image: imageUrl,
     });
     await newMessageSended.save();
-
-    // real time functionality remained with socket.io
+    
+    const receiverSocketId = getReceiverSocketId(receiverId);
+    if(receiverSocketId){
+      io.to(receiverSocketId).emit("newMessage", newMessageSended);
+    }
 
     return response.status(201).json(newMessageSended);
    } catch (error) {
-    console.log("Failed to get Messages", error.message);
+    console.log("Failed to send Messages", error.message);
     return response.status(500).json({message:"Internal Server Error"});
    }
 }

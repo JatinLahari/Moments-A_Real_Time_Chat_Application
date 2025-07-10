@@ -10,6 +10,10 @@ const io = new Server(server,{
     origin: ["http://localhost:5173"]
   }
 });
+
+export function getReceiverSocketId(userId){
+  return userSocketMap[userId];
+}
 // used to store online users
 const userSocketMap = {}; // {userId: socketId}
 

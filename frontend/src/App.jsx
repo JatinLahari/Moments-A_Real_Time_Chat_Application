@@ -9,7 +9,7 @@ import { useAuthStore } from "./store/useAuthStore";
 import {useThemeStore} from "./store/useThemeStore";
 import { useEffect } from "react";
 import {Toaster} from "react-hot-toast";
-import {CloudCog, Loader} from "lucide-react";
+import { Loader} from "lucide-react";
 
 const App = () => {
   const {authUser,checkAuth, isCheckingAuth, onlineUsers} = useAuthStore()
